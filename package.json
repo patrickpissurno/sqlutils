@@ -1,7 +1,7 @@
 {
   "name": "sqlutils",
   "version": "1.0.0",
-  "description": "SQL helper methods that simplify stuff",
+  "description": "Lightweight SQL helper methods that simplify stuff (MySQL and PostgreSQL)",
   "main": "index.js",
   "scripts": {
     "test": "tap --100"
@@ -15,7 +15,12 @@
     "mysql",
     "postgres",
     "helper",
-    "utils"
+    "utils",
+    "easy",
+    "mysql",
+    "postgres",
+    "pg",
+    "lightweight"
   ],
   "author": "Patrick Pissurno",
   "license": "MIT",
