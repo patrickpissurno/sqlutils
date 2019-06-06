@@ -18,7 +18,7 @@ The aim of this library is to offer standard helper methods that behave in a sim
 npm i sqlutils
 ```
 
-## Importing helper methods
+## How to import helpers
 
 PostgreSQL
 ```js
@@ -38,7 +38,7 @@ const { escape } = require('sqlutils/mysql');
 const escape = require('sqlutils/mysql').escape;
 ```
 
-## Example: escape(val)
+## escape(val)
 
 PostgreSQL
 ```js
@@ -52,7 +52,7 @@ const escape = require('sqlutils/mysql/escape');
 console.log(escape("let's do it")); //returns: 'let\'s do it'
 ```
 
-## Example: format(statement, obj)
+## format(statement, obj)
 
 PostgreSQL
 ```js
@@ -68,7 +68,7 @@ console.log(format('INSERT INTO customers ?', { name: 'John Doe', balance: 0 }))
 console.log(format('UPDATE customers SET ? WHERE id = 1', { nick: 'Max', name: 'Maximus' })); //returns: UPDATE customers SET nick='Max', name='Maximus' WHERE id = 1
 ```
 
-## Example: buildWhereFromQuery(queryObject)
+## buildWhereFromQuery(queryObject)
 
 PostgreSQL
 ```js
