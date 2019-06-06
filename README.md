@@ -85,7 +85,7 @@ console.log('SELECT * FROM customers' + buildWhereFromQuery({ name: ['Maximus', 
 ```
 
 ## Production-ready?
-Yes. This module has a strict 100% coverage policy. Travis-CI runs for every commit, which guarantees safety. It is also been in production internally for more than a year.
+Yes. This module has a strict 100% coverage policy. Travis-CI runs for every commit, which guarantees safety. It's been in production internally for more than a year.
 
 ## License
 
