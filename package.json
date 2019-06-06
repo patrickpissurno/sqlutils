@@ -1,0 +1,32 @@
+{
+  "name": "sqlutils",
+  "version": "1.0.0",
+  "description": "SQL helper methods that simplify stuff",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap --100"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patrickpissurno/sqlutils.git"
+  },
+  "keywords": [
+    "sql",
+    "mysql",
+    "postgres",
+    "helper",
+    "utils"
+  ],
+  "author": "Patrick Pissurno",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/patrickpissurno/sqlutils/issues"
+  },
+  "homepage": "https://github.com/patrickpissurno/sqlutils#readme",
+  "devDependencies": {
+    "tap": "^14.2.2"
+  },
+  "dependencies": {
+    "sqlstring": "^2.3.1"
+  }
+}
