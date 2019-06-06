@@ -20,7 +20,7 @@ npm i sqlutils
 
 ## Importing helper methods
 
-Postgres
+PostgreSQL
 ```js
 const escape = require('sqlutils/pg/escape');
 // or
@@ -40,7 +40,7 @@ const escape = require('sqlutils/mysql').escape;
 
 ## Example: escape(val)
 
-Postgres
+PostgreSQL
 ```js
 const escape = require('sqlutils/pg/escape');
 console.log(escape("let's do it")); //returns: 'let''s do it'
@@ -54,7 +54,7 @@ console.log(escape("let's do it")); //returns: 'let\'s do it'
 
 ## Example: format(statement, obj)
 
-Postgres
+PostgreSQL
 ```js
 const format = require('sqlutils/pg/format');
 console.log(format('INSERT INTO customers ?', { name: 'John Doe', balance: 0 })); //returns: INSERT INTO customers (name, balance) VALUES ('John Doe', 0)
@@ -70,7 +70,7 @@ console.log(format('UPDATE customers SET ? WHERE id = 1', { nick: 'Max', name: '
 
 ## Example: buildWhereFromQuery(queryObject)
 
-Postgres
+PostgreSQL
 ```js
 const buildWhereFromQuery = require('sqlutils/pg/buildWhereFromQuery');
 console.log('SELECT * FROM customers' + buildWhereFromQuery({ id: 1 })); //returns: SELECT * FROM customers WHERE id=1
@@ -85,8 +85,28 @@ console.log('SELECT * FROM customers' + buildWhereFromQuery({ name: ['Maximus', 
 ```
 
 ## Production-ready?
-Yes. This module has a strict 100% coverage policy. Travis-CI runs for every commit, which guarantees safety. It's been in production internally for more than a year.
+Yes. This library has a strict 100% coverage policy. Travis-CI runs for every commit, which guarantees safety. It's been in production internally for more than a year.
 
 ## License
 
-MIT
+MIT License
+
+Copyright (c) 2019 Patrick Pissurno
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

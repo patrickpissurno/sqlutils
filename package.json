@@ -13,14 +13,14 @@
   "keywords": [
     "sql",
     "mysql",
-    "postgres",
+    "postgresql",
+    "pg",
     "helper",
     "utils",
     "easy",
-    "mysql",
-    "postgres",
-    "pg",
-    "lightweight"
+    "lightweight",
+    "format",
+    "escape"
   ],
   "author": "Patrick Pissurno",
   "license": "MIT",
