@@ -84,6 +84,45 @@ console.log('SELECT * FROM customers' + buildWhereFromQuery({ id: 1 })); //retur
 console.log('SELECT * FROM customers' + buildWhereFromQuery({ name: ['Maximus', 'John Doe'], balance: 0 })); //returns: SELECT * FROM customers WHERE (name='Maximus' OR name='John Doe') AND balance=0
 ```
 
+## groupColumnsToObjects(rows, primary_key, groups)
+
+PostgreSQL and MySQL
+```js
+const groupColumnsToObjects = require('sqlutils/pg/groupColumnsToObjects'); //or require('sqlutils/mysql/buildWhereFromQuery');
+
+const rows = [ //in real-world applications this would be the result of a database query
+    { ssn: 'abcd', name: 'John Doe', email: 'john@example.com' },
+    { ssn: 'abcd', name: 'John Doe', email: 'john@acme.com' },
+    { ssn: 'defg', name: 'Jimmy', email: 'jimmy@example.com' },
+];
+
+const employees = groupColumnsToObjects(rows, 'ssn', [
+    { foreign_key: 'email', out: 'emails' }
+]);
+
+console.log(employees);
+/*
+[
+    {
+        "ssn": "abcd",
+        "name": "John Doe",
+        "emails": [
+            "john@example.com",
+            "john@acme.com"
+        ]
+    },
+    {
+        "ssn": "defg",
+        "name": "Jimmy",
+        "emails": [
+            "jimmy@example.com"
+        ]
+    }
+]
+*/
+```
+This method is much more powerful than it seems. For sofisticated examples [take a look here](https://github.com/patrickpissurno/sqlutils/blob/master/mysql/groupColumnsToObjects.test.js).
+
 ## Production-ready?
 Yes. This library has a strict 100% coverage policy. Travis-CI runs for every commit, which guarantees safety. It's been in production internally for more than a year.
 
