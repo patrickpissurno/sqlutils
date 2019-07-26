@@ -5,8 +5,10 @@ module.exports = function (value){
         return value;
 
     if(typeof(value) === 'string'){ // postgres strings are escaped with double quotes instead of backslash
+        value = value.replace(/\\/gi, '\u{0004}');
         value = sqlstring.escape(value);
-        return value.replace(/\\'/g, "''");
+        value = value.replace(/\\'/g, "''");
+        return value.replace(/\u{0004}/giu, '\\');
     }
 
     return sqlstring.escape(value);
