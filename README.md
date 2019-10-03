@@ -10,7 +10,7 @@ Lightweight SQL helper methods that simplify stuff (MySQL and PostgreSQL)
 
 `sqlutils` is powered by [sqlstring](https://github.com/mysqljs/sqlstring), the same library that powers [mysql2](https://www.npmjs.com/package/mysql2).
 
-The aim of this library is to offer standard helper methods that behave in a similar way for PostgreSQL and MySQL. 
+The aim of this library is to offer standard helper methods that behave in similar ways for PostgreSQL and MySQL. 
 
 ## Install
 
