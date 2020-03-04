@@ -13,13 +13,13 @@ module.exports = function (value){
         value = value.replace(/\v/gi, '\u{0013}');
         value = sqlstring.escape(value);
         value = value.replace(/\\'/g, "''");
-        value = value.replace(/\u{0013}/giu, `'||E'\\v'||'`);
-        value = value.replace(/\u{0012}/giu, `'||E'\\t'||'`);
-        value = value.replace(/\u{0011}/giu, `'||E'\\r'||'`);
-        value = value.replace(/\u{0007}/giu, `'||E'\\n'||'`);
-        value = value.replace(/\u{0005}/giu, `'||E'\\f'||'`);
+        value = value.replace(/\u{0013}/giu, '\v');
+        value = value.replace(/\u{0012}/giu, '\t');
+        value = value.replace(/\u{0011}/giu, '\r');
+        value = value.replace(/\u{0007}/giu, '\n');
+        value = value.replace(/\u{0005}/giu, '\f');
         value = value.replace(/\u{0004}/giu, '\\');
-        return value;
+        return 'E' + value;
     }
 
     return sqlstring.escape(value);
