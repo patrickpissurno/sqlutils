@@ -57,17 +57,19 @@ console.log(escape("let's do it")); //returns: 'let\'s do it'
 PostgreSQL
 ```js
 const format = require('sqlutils/pg/format');
-console.log(format('INSERT INTO customers ?', { name: 'John Doe', balance: 0 })); //returns: INSERT INTO customers (name, balance) VALUES ('John Doe', 0)
-console.log(format('UPDATE customers SET ? WHERE id = 1', { nick: 'Max', name: 'Maximus' })); //returns: UPDATE customers SET nick='Max', name='Maximus' WHERE id = 1
+console.log(format('INSERT INTO customers ?', { name: 'John Doe', balance: 0 })); //returns: INSERT INTO customers (name, balance) VALUES (E'John Doe', 0)
+console.log(format('UPDATE customers SET ? WHERE id = 1', { nick: 'Max', name: 'Maximus' })); //returns: UPDATE customers SET nick=E'Max', name=E'Maximus' WHERE id = 1
 console.log(format('UPDATE customers SET ? WHERE id = 1', { '!visits': '(SELECT COUNT(*) FROM customer_visits WHERE customer_id = 1)' })); //returns: UPDATE customers SET visits=(SELECT COUNT(*) FROM customer_visits WHERE customer_id = 1) WHERE id = 1
+console.log(format('INSERT INTO customers ?', [ { name: 'John Doe', balance: 0 }, { name: 'Joe', balance: 1 } ])); //returns: INSERT INTO customers (name, balance) VALUES (E'John Doe', 0), (E'Joe', 1)
 ```
 
 MySQL
 ```js
 const format = require('sqlutils/mysql/format');
-console.log(format('INSERT INTO customers ?', { name: 'John Doe', balance: 0 })); //returns: INSERT INTO customers SET name='John Doe', balance=0
+console.log(format('INSERT INTO customers ?', { name: 'John Doe', balance: 0 })); //returns: INSERT INTO customers (name, balance) VALUES ('John Doe', 0)
 console.log(format('UPDATE customers SET ? WHERE id = 1', { nick: 'Max', name: 'Maximus' })); //returns: UPDATE customers SET nick='Max', name='Maximus' WHERE id = 1
 console.log(format('UPDATE customers SET ? WHERE id = 1', { '!visits': '(SELECT COUNT(*) FROM customer_visits WHERE customer_id = 1)' })); //returns: UPDATE customers SET visits=(SELECT COUNT(*) FROM customer_visits WHERE customer_id = 1) WHERE id = 1
+console.log(format('INSERT INTO customers ?', [ { name: 'John Doe', balance: 0 }, { name: 'Joe', balance: 1 } ])); //returns: INSERT INTO customers (name, balance) VALUES ('John Doe', 0), ('Joe', 1)
 ```
 
 Some explanation about the third example: by using ```!visits``` instead of ```visits``` as the key, you tell the formatter not to escape the string value (raw mode). This way you can combine powerful SQL subqueries with the simplicity of sqlutils. I recommend reading that example carefully.
