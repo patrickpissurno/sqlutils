@@ -1,5 +1,9 @@
 const escape = require('./escape');
 
+/**
+ * @param { object } query object
+ * @returns { string }
+ */
 module.exports = function(query){
     let str = '';
 

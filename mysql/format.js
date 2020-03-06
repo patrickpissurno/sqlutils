@@ -2,7 +2,8 @@ const escape = require('./escape');
 
 /**
  * @param { string } statement sql statement
- * @param { any|any[] } obj object or array of objects
+ * @param { object|object[] } obj object or array of objects
+ * @returns { string }
  */
 module.exports = function(statement, obj){
     const array_mode = Array.isArray(obj);
