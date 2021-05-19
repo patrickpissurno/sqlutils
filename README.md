@@ -81,6 +81,7 @@ PostgreSQL
 const buildWhereFromQuery = require('sqlutils/pg/buildWhereFromQuery');
 console.log('SELECT * FROM customers' + buildWhereFromQuery({ id: 1 })); //returns: SELECT * FROM customers WHERE id=1
 console.log('SELECT * FROM customers' + buildWhereFromQuery({ name: ['Maximus', 'John Doe'], balance: 0 })); //returns: SELECT * FROM customers WHERE (name='Maximus' OR name='John Doe') AND balance=0
+console.log('SELECT * FROM customers' + buildWhereFromQuery([{ name: 'John Doe' }, { age: 41 }])); //returns: SELECT * FROM customers WHERE (name='John Doe') OR (age=41)
 ```
 
 MySQL
@@ -88,6 +89,7 @@ MySQL
 const buildWhereFromQuery = require('sqlutils/mysql/buildWhereFromQuery');
 console.log('SELECT * FROM customers' + buildWhereFromQuery({ id: 1 })); //returns: SELECT * FROM customers WHERE id=1
 console.log('SELECT * FROM customers' + buildWhereFromQuery({ name: ['Maximus', 'John Doe'], balance: 0 })); //returns: SELECT * FROM customers WHERE (name='Maximus' OR name='John Doe') AND balance=0
+console.log('SELECT * FROM customers' + buildWhereFromQuery([{ name: 'John Doe' }, { age: 41 }])); //returns: SELECT * FROM customers WHERE (name='John Doe') OR (age=41)
 ```
 
 ## groupColumnsToObjects(rows, primary_key, groups)
@@ -130,13 +132,13 @@ console.log(employees);
 This method is much more powerful than it seems. For sofisticated examples [take a look here](https://github.com/patrickpissurno/sqlutils/blob/master/mysql/groupColumnsToObjects.test.js).
 
 ## Production-ready?
-Yes. This library has a strict 100% coverage policy. Travis-CI runs for every commit, which guarantees safety. It's been in production internally for more than a year.
+Yes. This library has a strict 100% coverage policy. Travis-CI runs for every commit, which guarantees safety. It's been in production for more than three years.
 
 ## License
 
 MIT License
 
-Copyright (c) 2019 Patrick Pissurno
+Copyright (c) 2019-2021 Patrick Pissurno
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
