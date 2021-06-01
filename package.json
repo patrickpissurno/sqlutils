@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/patrickpissurno/sqlutils#readme",
   "devDependencies": {
-    "tap": "^14.4.2"
+    "tap": "^15.0.9"
   },
   "dependencies": {
     "sqlstring": "^2.3.2"
