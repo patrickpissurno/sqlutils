@@ -8,7 +8,9 @@
 
 Lightweight SQL helper methods that simplify stuff (MySQL and PostgreSQL)
 
-`sqlutils` is powered by [sqlstring](https://github.com/mysqljs/sqlstring), the same library that powers [mysql2](https://www.npmjs.com/package/mysql2).
+`sqlutils` (for MySQL) is powered by [sqlstring](https://github.com/mysqljs/sqlstring), the same library that powers [mysql2](https://www.npmjs.com/package/mysql2).
+
+`sqlutils` (for PostgreSQL) is powered by [pg-promise](https://github.com/vitaly-t/pg-promise), one of the most popular PostgreSQL libraries for Node, with more than 3.1k stars and in active development.
 
 The aim of this library is to offer standard helper methods that behave in similar ways for PostgreSQL and MySQL. 
 
@@ -57,10 +59,10 @@ console.log(escape("let's do it")); //returns: 'let\'s do it'
 PostgreSQL
 ```js
 const format = require('sqlutils/pg/format');
-console.log(format('INSERT INTO customers ?', { name: 'John Doe', balance: 0 })); //returns: INSERT INTO customers (name, balance) VALUES (E'John Doe', 0)
-console.log(format('UPDATE customers SET ? WHERE id = 1', { nick: 'Max', name: 'Maximus' })); //returns: UPDATE customers SET nick=E'Max', name=E'Maximus' WHERE id = 1
+console.log(format('INSERT INTO customers ?', { name: 'John Doe', balance: 0 })); //returns: INSERT INTO customers (name, balance) VALUES ('John Doe', 0)
+console.log(format('UPDATE customers SET ? WHERE id = 1', { nick: 'Max', name: 'Maximus' })); //returns: UPDATE customers SET nick='Max', name='Maximus' WHERE id = 1
 console.log(format('UPDATE customers SET ? WHERE id = 1', { '!visits': '(SELECT COUNT(*) FROM customer_visits WHERE customer_id = 1)' })); //returns: UPDATE customers SET visits=(SELECT COUNT(*) FROM customer_visits WHERE customer_id = 1) WHERE id = 1
-console.log(format('INSERT INTO customers ?', [ { name: 'John Doe', balance: 0 }, { name: 'Joe', balance: 1 } ])); //returns: INSERT INTO customers (name, balance) VALUES (E'John Doe', 0), (E'Joe', 1)
+console.log(format('INSERT INTO customers ?', [ { name: 'John Doe', balance: 0 }, { name: 'Joe', balance: 1 } ])); //returns: INSERT INTO customers (name, balance) VALUES ('John Doe', 0), ('Joe', 1)
 ```
 
 MySQL
@@ -132,13 +134,13 @@ console.log(employees);
 This method is much more powerful than it seems. For sofisticated examples [take a look here](https://github.com/patrickpissurno/sqlutils/blob/master/mysql/groupColumnsToObjects.test.js).
 
 ## Production-ready?
-Yes. This library has a strict 100% coverage policy. Travis-CI runs for every commit, which guarantees safety. It's been in production for more than three years.
+Yes. This library has a strict 100% coverage policy. Travis-CI runs for every commit, which guarantees safety. It's been in production for more than four years.
 
 ## License
 
 MIT License
 
-Copyright (c) 2019-2021 Patrick Pissurno
+Copyright (c) 2019-2022 Patrick Pissurno
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

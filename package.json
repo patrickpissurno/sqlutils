@@ -32,6 +32,7 @@
     "tap": "^15.0.9"
   },
   "dependencies": {
+    "pg-promise": "^10.11.1",
     "sqlstring": "^2.3.2"
   }
 }

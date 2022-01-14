@@ -1,4 +1,4 @@
-const sqlstring = require('sqlstring');
+const format = require('pg-promise/lib/formatting');
 
 /**
  * @param { any } value any value
@@ -8,23 +8,29 @@ module.exports = function (value){
     if(value === 'NOW()' || value === 'now()') // NOW() returned as-is, so that working with dates is easier
         return value;
 
-    if(typeof(value) === 'string'){ // postgres strings are escaped with double quotes instead of backslash
-        value = value.replace(/\\/gi, '\u{0004}');
-        value = value.replace(/\f/gi, '\u{0005}');
-        value = value.replace(/\n/gi, '\u{0007}');
-        value = value.replace(/\r/gi, '\u{0011}');
-        value = value.replace(/\t/gi, '\u{0012}');
-        value = value.replace(/\v/gi, '\u{0013}');
-        value = sqlstring.escape(value);
-        value = value.replace(/\\'/g, "''");
-        value = value.replace(/\u{0013}/giu, '\v');
-        value = value.replace(/\u{0012}/giu, '\t');
-        value = value.replace(/\u{0011}/giu, '\r');
-        value = value.replace(/\u{0007}/giu, '\n');
-        value = value.replace(/\u{0005}/giu, '\f');
-        value = value.replace(/\u{0004}/giu, '\\');
-        return 'E' + value;
-    }
+    if (value == null) 
+        return 'null';
 
-    return sqlstring.escape(value);
+    switch (typeof value) {
+        case 'string':
+            return format.as.text(value, false);
+        case 'boolean':
+            return format.as.bool(value);
+        case 'number':
+        case 'bigint':
+            return format.as.number(value);
+        case 'symbol':
+            throw new TypeError(`Type Symbol has no meaning for PostgreSQL: ${value.toString()}`);
+        default:
+            if (value instanceof Date) {
+                return format.as.date(value, false);
+            }
+            if (value instanceof Array) {
+                return format.as.array(value);
+            }
+            if (value instanceof Buffer) {
+                return format.as.buffer(value, false);
+            }
+            return format.as.json(value, false);
+    }
 }
