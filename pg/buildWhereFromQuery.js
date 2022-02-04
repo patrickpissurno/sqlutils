@@ -1,5 +1,8 @@
 const escape = require('./escape');
 
+//TODO: keys should also be escaped with the double quote character (")
+// and support for columns with whitespaces should also be added
+
 /**
  * @param { object } query object
  * @returns { string }
