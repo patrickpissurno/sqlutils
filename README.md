@@ -94,11 +94,21 @@ console.log('SELECT * FROM customers' + buildWhereFromQuery({ name: ['Maximus', 
 console.log('SELECT * FROM customers' + buildWhereFromQuery([{ name: 'John Doe' }, { age: 41 }])); //returns: SELECT * FROM customers WHERE (name='John Doe') OR (age=41)
 ```
 
-## groupColumnsToObjects(rows, primary_key, groups)
+## transformer(rows, transformation)
+
+~~Do you like transformers? Then look no further.~~
+
+This is the new Transformer&trade; API. What does it do?
+It offers a declarative way to express how your query results
+should look like, then it does the magic for you. Sounds simple, right?
+
+You can check out the [full documentation here](https://github.com/patrickpissurno/sqlutils/blob/master/docs/transformer.md). It will get you up and running quickly.
+
+Let's have a look:
 
 PostgreSQL and MySQL
 ```js
-const groupColumnsToObjects = require('sqlutils/pg/groupColumnsToObjects'); //or require('sqlutils/mysql/buildWhereFromQuery');
+const transformer = require('sqlutils/pg/transformer'); //or require('sqlutils/mysql/transformer');
 
 const rows = [ //in real-world applications this would be the result of a database query
     { ssn: 'abcd', name: 'John Doe', email: 'john@example.com' },
@@ -106,32 +116,96 @@ const rows = [ //in real-world applications this would be the result of a databa
     { ssn: 'defg', name: 'Jimmy', email: 'jimmy@example.com' },
 ];
 
-const employees = groupColumnsToObjects(rows, 'ssn', [
-    { foreign_key: 'email', out: 'emails' }
-]);
+const employees = transformer(rows, {
+    key: 'ssn',
+    columns: ['name'],
+    children: [{
+        key: ['email'],
+        rename: 'emails',
+        flat: true
+    }]
+});
 
 console.log(employees);
 /*
 [
+    { ssn: 'abcd', name: 'John Doe', emails: ['john@example.com', 'john@acme.com' ] },
+    { ssn: 'defg', name: 'Jimmy', emails: ['jimmy@example.com'] }
+]
+*/
+```
+
+Easy! Now let's see something a bit more complex:
+
+PostgreSQL and MySQL
+```js
+const transformer = require('sqlutils/pg/transformer'); //or require('sqlutils/mysql/transformer');
+
+const rows = [ //in real-world applications this would be the result of a database query
+    { id: 1, name: 'Alice', sale_id: 1, sale_price_paid: 10.5, sale_item_code: 1, sale_item_name: 'A' },
+    { id: 1, name: 'Alice', sale_id: 1, sale_price_paid: 10.5, sale_item_code: 2, sale_item_name: 'B' },
+    { id: 1, name: 'Alice', sale_id: 2, sale_price_paid: 5.5, sale_item_code: 3, sale_item_name: 'C' },
+    { id: 1, name: 'Alice', sale_id: 2, sale_price_paid: 5.5, sale_item_code: 4, sale_item_name: 'D' },
+    { id: 2, name: 'Bob', sale_id: 3, sale_price_paid: 7.5, sale_item_code: 5, sale_item_name: 'E' },
+    { id: 2, name: 'Bob', sale_id: 4, sale_price_paid: 15.5, sale_item_code: 6, sale_item_name: 'F' },
+];
+
+const customers = transformer(rows, {
+    key: 'id',
+    columns: ['name'],
+    children: [{
+        key: ['sale_id', 'id'],
+        columns: [
+            ['sale_price_paid', 'price_paid'],
+        ],
+        rename: 'sales',
+        children: [{
+            key: ['sale_item_code', 'code'],
+            columns: [ ['sale_item_name', 'name'] ],
+            rename: 'items',
+        }]
+    }]
+});
+
+console.log(customers);
+/*
+[
     {
-        "ssn": "abcd",
-        "name": "John Doe",
-        "emails": [
-            "john@example.com",
-            "john@acme.com"
+        id: 1,
+        name: 'Alice',
+        sales: [
+            { id: 1, price_paid: 10.5, items: [ { code: 1, name: 'A' }, { code: 2, name: 'B' } ] },
+            { id: 2, price_paid: 5.5, items: [ { code: 3, name: 'C' }, { code: 4, name: 'D' } ] },
         ]
     },
     {
-        "ssn": "defg",
-        "name": "Jimmy",
-        "emails": [
-            "jimmy@example.com"
+        id: 2,
+        name: 'Bob',
+        sales: [
+            { id: 3, price_paid: 7.5, items: [ { code: 5, name: 'E' } ] },
+            { id: 4, price_paid: 15.5, items: [ { code: 6, name: 'F' } ] },
         ]
     }
 ]
 */
 ```
-This method is much more powerful than it seems. For sofisticated examples [take a look here](https://github.com/patrickpissurno/sqlutils/blob/master/mysql/groupColumnsToObjects.test.js).
+
+See? Quite easy, right? And that's still just the tip of the iceberg.
+This little monster can tackle a whole lot of tasks, while still being
+simple and declarative (maybe even intuitive when you get the hang of it).
+
+I really advise you [check out the docs](https://github.com/patrickpissurno/sqlutils/blob/master/docs/transformer.md). There you'll find everything you need
+not only to get up and running quickly, but also a complete description of
+every feature it provides.
+
+By the way: imagine you could even get autocomplete for your query results when using
+this marvelous API? Sounds like magic? It sure is. But it's also true and possible,
+and I'm writing my thesis on it. Hang tight, a tool for it will be available this July (2022).
+Same API: just plug and play.
+
+## groupColumnsToObjects
+
+[Take a look here](https://github.com/patrickpissurno/sqlutils/blob/master/docs/groupColumnsToObjects.md).
 
 ## Production-ready?
 Yes. This library has a strict 100% coverage policy. Travis-CI runs for every commit, which guarantees safety. It's been in production for more than four years.
