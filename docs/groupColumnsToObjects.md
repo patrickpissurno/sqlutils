@@ -1,6 +1,7 @@
 ## groupColumnsToObjects(rows, primary_key, groups)
 
 This method has been *deprecated*, as an improved alternative has been provided: the **transformer** api.
+
 Going forward `groupColumnsToObjects` will be kept the same (improvements are not planned, though)
 and the new transformer API will also be provided (with updates and improvements) separately
 through the `transformer` helper.
