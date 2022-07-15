@@ -102,7 +102,7 @@ This is the new Transformer&trade; API. What does it do?
 It offers a declarative way to express how your query results
 should look like, then it does the magic for you. Sounds simple, right?
 
-You can check out the [full documentation here](https://github.com/patrickpissurno/sqlutils/blob/master/docs/transformer.md). It will get you up and running quickly.
+You can check out the [full documentation here](./docs/transformer.md). It will get you up and running quickly.
 
 Let's have a look:
 

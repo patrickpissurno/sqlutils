@@ -1,6 +1,6 @@
 # The Transformer API
 
-### What does it do?
+## What does it do?
 It offers a declarative way to express how your query results
 should look like, then it does the magic for you. Sounds simple, right?
 
@@ -19,7 +19,7 @@ It really doesn't matter. What does matter is the schema of that resulting query
 That means: if you want a transformation to be based on some column, it better be part
 of that recordset.
 
-### What it does NOT do
+## What it does NOT do
 
 It won't make you coffee, and it surely won't help you map the transformed results back to
 a recordset. It won't offer any `.save()` or `.persist()` methods. Remember: **it's not an ORM**.
@@ -28,7 +28,7 @@ If you need that kind of functionality, this is not the right tool for the job.
 But, for just a second, take a break and think: "Do I really need an ORM?". I find that oftentimes
 people overuse ORMs, just because it's common practice.
 
-### In action
+## In action
 
 PostgreSQL and MySQL
 ```js
@@ -59,7 +59,7 @@ console.log(employees);
 */
 ```
 
-### The API
+## The API
 
 For those of us who like UML diagrams, here it goes:
 
@@ -72,7 +72,7 @@ structure (albeit with some spices that we'll get into in a second).
 
 So there are three main properties a transformation can have: `key`, `columns` and `children`.
 
-#### key
+### key
 
 The `key` property can be understood as the column name for a (primary/foreign) key in that
 recordset. Make no mistake, though, because as I said earlier, the database schema doesn't matter.
@@ -93,7 +93,7 @@ that the column should have in the final result. That is, the array variant can 
 to rename a column. Its second element can also be ommited or null, to specify that
 the column shouldn't be present in the final result.
 
-#### columns
+### columns
 
 The `columns` property specifies the names of all columns that should sit next to the `key`
 column in the final result. The column specified in the `key` property is already assumed
@@ -103,14 +103,14 @@ The `columns` property should always be present in any transformation. As you'd 
 it's an array of columns. Its elements can be either strings, arrays containing two
 strings each (to support renaming, like with the `key` property) or a mix of both.
 
-#### children
+### children
 
 The `children` property is optional. It allows child transformations to be specified.
 It's specified as an array of child transformations. Child transformations look just
 like regular transformations, but with some extra spices. They can have three extra
 properties: `rename`, `single` and `flat`.
 
-#### rename
+### rename
 
 The `rename` property should always be present in child transformations, as it specifies
 the name of the property that will contain the result of the transformation in its
@@ -119,7 +119,7 @@ transformation.
 
 It's just a string.
 
-#### single
+### single
 
 The `single` property is optional. By default child transformation result in an array
 being present in the parent, at the property specified by the `rename` property.
@@ -139,7 +139,7 @@ That would result in just a regular column being present in the parent, which yo
 messing with child transformations and instead just adding that column to the `columns` property of
 the parent. As you see, it makes no logical sense, and thus, is forbidden by design.
 
-#### flat
+### flat
 
 The `flat` property is optional. By default child transformations result in an array of objects
 being present in the parent, at the property specified by the `rename` property. However, sometimes
@@ -158,7 +158,7 @@ That would result in just a regular column being present in the parent, which yo
 messing with child transformations and instead just adding that column to the `columns` property of
 the parent. As you see, it makes no logical sense, and thus, is forbidden by design.
 
-### Usage example
+## Usage example
 
 PostgreSQL and MySQL
 ```js
@@ -213,7 +213,7 @@ console.log(customers);
 */
 ```
 
-### Tips
+## Tips
 
 Although the docs are still not as good as I'd like them to be, by now you should have
 a decent understanding about the library, enough to use it. In case you're still not
