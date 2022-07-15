@@ -194,7 +194,7 @@ See? Quite easy, right? And that's still just the tip of the iceberg.
 This little monster can tackle a whole lot of tasks, while still being
 simple and declarative (maybe even intuitive when you get the hang of it).
 
-I really advise you [check out the docs](https://github.com/patrickpissurno/sqlutils/blob/master/docs/transformer.md). There you'll find everything you need
+I really advise you [check out the docs](./docs/transformer.md). There you'll find everything you need
 not only to get up and running quickly, but also a complete description of
 every feature it provides.
 
@@ -205,7 +205,7 @@ Same API: just plug and play.
 
 ## groupColumnsToObjects
 
-[Take a look here](https://github.com/patrickpissurno/sqlutils/blob/master/docs/groupColumnsToObjects.md).
+[Take a look here](./docs/groupColumnsToObjects.md).
 
 ## Production-ready?
 Yes. This library has a strict 100% coverage policy. Travis-CI runs for every commit, which guarantees safety. It's been in production for more than four years.

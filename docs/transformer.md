@@ -10,8 +10,8 @@ Although it can serve a similar purpose in some cases, this is a different appro
 full-fledged ORMs do, and **this is not an ORM**.
 
 The primary use case is applications where structured query results are desired, but having
-a bunch of class definitions and such is not. With this all you gotta do is follow the API
-to specify what the result should look like and rest assured it'll do that for you. No model
+a bunch of class definitions and such is not. With this, all you gotta do is follow the API
+to specify what the result should look like, and rest assured it'll do that for you. No model
 classes. No ORM anything. Just magic.
 
 It is important to note that the schema of the database is not taken into consideration.
@@ -22,10 +22,10 @@ of that recordset.
 ### What it does NOT do
 
 It won't make you coffee, and it surely won't help you map the transformed results back to
-a recordset. It won't offer any `.save()` or `.persist()` method. Remember: **it's not an ORM**.
+a recordset. It won't offer any `.save()` or `.persist()` methods. Remember: **it's not an ORM**.
 If you need that kind of functionality, this is not the right tool for the job.
 
-But for just a second take a break and think: "Do I really need an ORM?". I find that oftentimes
+But, for just a second, take a break and think: "Do I really need an ORM?". I find that oftentimes
 people overuse ORMs, just because it's common practice.
 
 ### In action
@@ -63,12 +63,12 @@ console.log(employees);
 
 For those of us who like UML diagrams, here it goes:
 
-![UML diagram representation of the API](./transformer-uml.png)
+<img alt="UML diagram representation of the API" src="./transformer-uml.png" width="391" height="411">
 
 For the rest of us, there's really not much to it. A transformation is always specified
 as a regular JavaScript object with a specific structure. That is the root transformation.
 Each transformation can have their own child transformations, that also have that same
-structure (albeit with some spices that I'll get into in a second).
+structure (albeit with some spices that we'll get into in a second).
 
 So there are three main properties a transformation can have: `key`, `columns` and `children`.
 
@@ -119,7 +119,7 @@ transformation.
 
 It's just a string.
 
-#### `single`
+#### single
 
 The `single` property is optional. By default child transformation result in an array
 being present in the parent, at the property specified by the `rename` property.
@@ -139,7 +139,7 @@ That would result in just a regular column being present in the parent, which yo
 messing with child transformations and instead just adding that column to the `columns` property of
 the parent. As you see, it makes no logical sense, and thus, is forbidden by design.
 
-#### `flat`
+#### flat
 
 The `flat` property is optional. By default child transformations result in an array of objects
 being present in the parent, at the property specified by the `rename` property. However, sometimes
