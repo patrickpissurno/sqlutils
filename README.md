@@ -200,7 +200,7 @@ every feature it provides.
 
 By the way: imagine you could even get autocomplete for your query results when using
 this marvelous API? Sounds like magic? It sure is. But it's also true and possible,
-and I'm writing my thesis on it. Hang tight, a tool for it will be available this July (2022).
+and I'm writing my thesis on it. Hang tight, a tool for it will be available this August (2022).
 Same API: just plug and play.
 
 ## groupColumnsToObjects
