@@ -3,7 +3,7 @@
 [![build status](https://travis-ci.org/patrickpissurno/sqlutils.svg?branch=master)](https://travis-ci.org/patrickpissurno/sqlutils)
 [![coverage status](https://coveralls.io/repos/github/patrickpissurno/sqlutils/badge.svg?branch=master)](https://coveralls.io/github/patrickpissurno/sqlutils?branch=master)
 [![known vulnerabilities](https://snyk.io/test/github/patrickpissurno/sqlutils/badge.svg)](https://snyk.io/test/github/patrickpissurno/sqlutils)
-[![downloads](https://img.shields.io/npm/dt/sqlutils.svg)](http://npm-stats.com/~packages/sqlutils)
+[![downloads](https://img.shields.io/npm/dt/sqlutils.svg)](https://www.npmjs.com/package/sqlutils)
 [![license](https://img.shields.io/github/license/patrickpissurno/sqlutils.svg?maxAge=1800)](https://github.com/patrickpissurno/sqlutils/blob/master/LICENSE)
 
 Lightweight SQL helper methods that simplify stuff (MySQL and PostgreSQL)
