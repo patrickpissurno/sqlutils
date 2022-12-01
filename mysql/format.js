@@ -6,6 +6,8 @@ const escape = require('./escape');
  * @returns { string }
  */
 module.exports = function(statement, obj){
+    obj = JSON.parse(JSON.stringify(obj)); // clone obj to avoid mutations
+
     const array_mode = Array.isArray(obj);
     if(array_mode && obj.length === 0)
         throw new Error('array should have at least one element');
