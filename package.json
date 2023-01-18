@@ -29,10 +29,10 @@
   },
   "homepage": "https://github.com/patrickpissurno/sqlutils#readme",
   "devDependencies": {
-    "tap": "^16.3.2"
+    "tap": "^16.3.4"
   },
   "dependencies": {
-    "pg-promise": "^10.15.4",
+    "pg-promise": "^11.0.2",
     "sqlstring": "^2.3.3"
   }
 }
