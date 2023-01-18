@@ -1,6 +1,6 @@
 {
   "name": "sqlutils",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "Lightweight SQL helper methods that simplify stuff (MySQL and PostgreSQL)",
   "main": "index.js",
   "scripts": {
