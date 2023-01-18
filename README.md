@@ -200,7 +200,7 @@ every feature it provides.
 
 By the way: imagine you could even get autocomplete for your query results when using
 this marvelous API? Sounds like magic? It sure is. But it's also true and possible,
-and I'm writing my thesis on it. Hang tight, a tool for it will be available this August (2022).
+and I'm writing my thesis on it. Hang tight, a tool for it will be available later this year.
 Same API: just plug and play.
 
 ## groupColumnsToObjects
@@ -214,7 +214,7 @@ Yes. This library has a strict 100% coverage policy. Travis-CI runs for every co
 
 MIT License
 
-Copyright (c) 2019-2022 Patrick Pissurno
+Copyright (c) 2019-2023 Patrick Pissurno
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
