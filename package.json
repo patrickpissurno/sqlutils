@@ -4,7 +4,7 @@
   "description": "Lightweight SQL helper methods that simplify stuff (MySQL and PostgreSQL)",
   "main": "index.js",
   "scripts": {
-    "test": "tap --100"
+    "test": "tap --coverage-report=lcov --no-browser --show-full-coverage"
   },
   "repository": {
     "type": "git",
@@ -29,10 +29,10 @@
   },
   "homepage": "https://github.com/patrickpissurno/sqlutils#readme",
   "devDependencies": {
-    "tap": "^16.3.4"
+    "tap": "^21.0.1"
   },
   "dependencies": {
-    "pg-promise": "^11.0.2",
+    "pg-promise": "^11.10.2",
     "sqlstring": "^2.3.3"
   }
 }
