@@ -1,6 +1,5 @@
 # sqlutils
 [![npm-version](https://img.shields.io/npm/v/sqlutils.svg)](https://www.npmjs.com/package/sqlutils)
-[![build status](https://travis-ci.org/patrickpissurno/sqlutils.svg?branch=master)](https://travis-ci.org/patrickpissurno/sqlutils)
 [![coverage status](https://coveralls.io/repos/github/patrickpissurno/sqlutils/badge.svg?branch=master)](https://coveralls.io/github/patrickpissurno/sqlutils?branch=master)
 [![known vulnerabilities](https://snyk.io/test/github/patrickpissurno/sqlutils/badge.svg)](https://snyk.io/test/github/patrickpissurno/sqlutils)
 [![downloads](https://img.shields.io/npm/dt/sqlutils.svg)](https://www.npmjs.com/package/sqlutils)
@@ -214,7 +213,7 @@ Yes. This library has a strict 100% coverage policy. Travis-CI runs for every co
 
 MIT License
 
-Copyright (c) 2019-2023 Patrick Pissurno
+Copyright (c) 2019-2025 Patrick Pissurno
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
