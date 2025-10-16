@@ -11,6 +11,9 @@ importers:
       pg-promise:
         specifier: ^12.2.0
         version: 12.2.0(pg-query-stream@4.10.3(pg@8.16.3))
+      prettier:
+        specifier: ^3.6.2
+        version: 3.6.2
       sqlstring:
         specifier: ^2.3.3
         version: 2.3.3
@@ -90,6 +93,11 @@ packages:
   postgres-interval@1.2.0:
     resolution: {integrity: sha512-9ZhXKM/rw350N1ovuWHbGxnGh/SNJ4cnxHiM0rxE4VN41wsg8P8zWn9hv/buK00RP4WvlOyr/RBDiptyxVbkZQ==}
     engines: {node: '>=0.10.0'}
+
+  prettier@3.6.2:
+    resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
+    engines: {node: '>=14'}
+    hasBin: true
 
   spex@4.0.2:
     resolution: {integrity: sha512-/8VnouFOkRlkfj/sDN6GYnRKCutBHjUndkg6oAgv374VvjYQRzzR2gTEXRsmFmgd1SrbI8W948iTDnkEkUieCw==}
@@ -176,6 +184,8 @@ snapshots:
   postgres-interval@1.2.0:
     dependencies:
       xtend: 4.0.2
+
+  prettier@3.6.2: {}
 
   spex@4.0.2: {}
 

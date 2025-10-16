@@ -4,9 +4,9 @@ const buildWhereFromQuery = require('./buildWhereFromQuery');
 const groupColumnsToObjects = require('./groupColumnsToObjects');
 const transformer = require('./transformer');
 module.exports = {
-    escape,
-    format,
-    buildWhereFromQuery,
-    groupColumnsToObjects,
-    transformer,
+  escape,
+  format,
+  buildWhereFromQuery,
+  groupColumnsToObjects,
+  transformer,
 };

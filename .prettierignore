@@ -1,1 +1,3 @@
-README.md
+*.md
+LICENSE
+pnpm-lock.yaml
