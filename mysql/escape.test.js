@@ -1,6 +1,17 @@
-const tap = require('tap');
+const { describe, test } = require('node:test');
+const assert = require('node:assert');
 const escape = require('./escape');
 
-tap.equal(escape('Test'), `'Test'`, 'regular string');
-tap.equal(escape(`now()`), `now()`, 'now() should not be escaped');
-tap.equal(escape(`NOW()`), `NOW()`, 'NOW() should not be escaped');
+describe('escape (mysql)', () => {
+  test('regular string', () => {
+    assert.equal(escape('Test'), `'Test'`);
+  });
+
+  test('now() should not be escaped', () => {
+    assert.equal(escape(`now()`), `now()`);
+  });
+
+  test('NOW() should not be escaped', () => {
+    assert.equal(escape(`NOW()`), `NOW()`);
+  });
+});
