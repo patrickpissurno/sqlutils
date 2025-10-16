@@ -3,8 +3,9 @@
   "version": "2.0.0",
   "description": "Lightweight SQL helper methods that simplify stuff (MySQL and PostgreSQL)",
   "main": "index.ts",
+  "type": "module",
   "scripts": {
-    "test": "node --test --experimental-test-coverage",
+    "test": "node --test --experimental-test-coverage --experimental-strip-types",
     "prettier": "prettier --write ."
   },
   "repository": {
@@ -30,7 +31,9 @@
   },
   "homepage": "https://github.com/patrickpissurno/sqlutils#readme",
   "devDependencies": {
-    "prettier": "^3.6.2"
+    "@types/node": "^24.7.2",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "pg-promise": "^12.2.0",

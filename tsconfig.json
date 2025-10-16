@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": false,
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "allowJs": false,
+    "moduleResolution": "node",
+    "lib": ["ES2022"],
+    "module": "ESNext",
+    "target": "ESNext",
+    "baseUrl": ".",
+    "noEmit": true,
+    "allowImportingTsExtensions": true
+  }
+}
