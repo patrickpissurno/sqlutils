@@ -11,12 +11,13 @@ importers:
       pg-promise:
         specifier: ^12.2.0
         version: 12.2.0(pg-query-stream@4.10.3(pg@8.16.3))
-      prettier:
-        specifier: ^3.6.2
-        version: 3.6.2
       sqlstring:
         specifier: ^2.3.3
         version: 2.3.3
+    devDependencies:
+      prettier:
+        specifier: ^3.6.2
+        version: 3.6.2
 
 packages:
 
