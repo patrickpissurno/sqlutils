@@ -1,6 +1,6 @@
-const { describe, test } = require('node:test');
-const assert = require('node:assert');
-const buildWhereFromQuery = require('./buildWhereFromQuery');
+import { describe, test } from 'node:test';
+import assert from 'node:assert';
+import { buildWhereFromQuery } from './buildWhereFromQuery.js';
 
 describe('buildWhereFromQuery (pg)', () => {
   test('empty case', () => {

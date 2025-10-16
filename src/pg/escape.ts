@@ -3,7 +3,7 @@ import format from 'pg-promise/lib/formatting.js';
 /**
  * @param value any value
  */
-export function escape(value: any): string {
+export function escape(value: unknown): string {
   if (value === 'NOW()' || value === 'now()')
     // NOW() returned as-is, so that working with dates is easier
     return value;
