@@ -1,6 +1,6 @@
-const { describe, test } = require('node:test');
-const assert = require('node:assert');
-const recursiveMapsToLists = require('./recursiveMapsToLists');
+import { describe, test } from 'node:test';
+import assert from 'node:assert';
+import { recursiveMapsToLists } from './recursiveMapsToLists.ts';
 
 describe('recursiveMapsToLists', () => {
   test('basic should work', () => {
