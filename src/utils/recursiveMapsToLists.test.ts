@@ -1,6 +1,6 @@
 import { describe, test } from 'node:test';
 import assert from 'node:assert';
-import { recursiveMapsToLists } from './recursiveMapsToLists.ts';
+import { recursiveMapsToLists } from './recursiveMapsToLists.js';
 
 describe('recursiveMapsToLists', () => {
   test('basic should work', () => {

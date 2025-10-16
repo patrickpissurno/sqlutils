@@ -1,10 +1,9 @@
-const format = require('pg-promise/lib/formatting');
+import format from 'pg-promise/lib/formatting.js';
 
 /**
- * @param { any } value any value
- * @returns { string }
+ * @param value any value
  */
-module.exports = function (value) {
+export function escape(value: any): string {
   if (value === 'NOW()' || value === 'now()')
     // NOW() returned as-is, so that working with dates is easier
     return value;
@@ -35,4 +34,4 @@ module.exports = function (value) {
       }
       return format.as.json(value, false);
   }
-};
+}
