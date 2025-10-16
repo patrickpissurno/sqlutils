@@ -21,7 +21,7 @@ describe('buildWhereFromQuery (mysql)', () => {
   test('boolean, null, and string', () => {
     assert.equal(
       buildWhereFromQuery({ a: [true, null], b: 'hello' }),
-      ` WHERE ((a=true OR a IS null) AND b='hello')`,
+      ` WHERE ((a=true OR a IS NULL) AND b='hello')`,
     );
   });
 });
