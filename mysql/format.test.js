@@ -1,40 +1,54 @@
-const tap = require('tap');
+const { describe, test } = require('node:test');
+const assert = require('node:assert');
 const format = require('./format');
 
-tap.throws(
-  () => format('INSERT INTO customer ?', []),
-  'array should have at least one element',
-);
-tap.throws(
-  () => format('UPDATE customer SET ?', [{ a: 1 }]),
-  'use objects for update queries, not arrays',
-);
+describe('format (mysql)', () => {
+  test('array should have at least one element', () => {
+    assert.throws(() => format('INSERT INTO customer ?', []));
+  });
 
-tap.equal(
-  format('INSERT INTO customer ?', { fullname: 'Test', balance: 1 }),
-  `INSERT INTO customer (fullname,balance) VALUES ('Test',1)`,
-);
-tap.equal(
-  format('UPDATE customer SET ?', { last_seen: 'NOW()', visits: 3 }),
-  `UPDATE customer SET last_seen=NOW(),visits=3`,
-);
-tap.equal(
-  format('UPDATE customer SET ?', {
-    fullname: 'Test',
-    '!visits': '(SELECT COUNT(*) FROM customer_visits)',
-  }),
-  `UPDATE customer SET fullname='Test',visits=(SELECT COUNT(*) FROM customer_visits)`,
-);
+  test('use objects for update queries, not arrays', () => {
+    assert.throws(() => format('UPDATE customer SET ?', [{ a: 1 }]));
+  });
 
-tap.equal(
-  format('INSERT INTO customer ?', [
-    { fullname: 'Test', balance: 1 },
-    { fullname: 'Test 2', balance: 3 },
-  ]),
-  `INSERT INTO customer (fullname,balance) VALUES ('Test',1),('Test 2',3)`,
-);
+  test('basic INSERT works', () => {
+    assert.equal(
+      format('INSERT INTO customer ?', { fullname: 'Test', balance: 1 }),
+      `INSERT INTO customer (fullname,balance) VALUES ('Test',1)`,
+    );
+  });
 
-const input = [{ a: 1, b: null }];
-const backup = JSON.parse(JSON.stringify(input));
-format('INSERT INTO customer ?', input);
-tap.same(input, backup, 'format should not mutate its params');
+  test('basic UPDATE works', () => {
+    assert.equal(
+      format('UPDATE customer SET ?', { last_seen: 'NOW()', visits: 3 }),
+      `UPDATE customer SET last_seen=NOW(),visits=3`,
+    );
+  });
+
+  test('unescape works', () => {
+    assert.equal(
+      format('UPDATE customer SET ?', {
+        fullname: 'Test',
+        '!visits': '(SELECT COUNT(*) FROM customer_visits)',
+      }),
+      `UPDATE customer SET fullname='Test',visits=(SELECT COUNT(*) FROM customer_visits)`,
+    );
+  });
+
+  test('bulk INSERT works', () => {
+    assert.equal(
+      format('INSERT INTO customer ?', [
+        { fullname: 'Test', balance: 1 },
+        { fullname: 'Test 2', balance: 3 },
+      ]),
+      `INSERT INTO customer (fullname,balance) VALUES ('Test',1),('Test 2',3)`,
+    );
+  });
+
+  test('should not mutate params', () => {
+    const input = [{ a: 1, b: null }];
+    const backup = JSON.parse(JSON.stringify(input));
+    format('INSERT INTO customer ?', input);
+    assert.deepStrictEqual(input, backup);
+  });
+});
