@@ -44,4 +44,11 @@ describe('format (pg)', () => {
       `INSERT INTO customer (fullname,balance) VALUES ('Test',1),('Test 2',3)`,
     );
   });
+
+  test('should not mutate params', () => {
+    const input = [{ a: 1, b: null }];
+    const backup = JSON.parse(JSON.stringify(input));
+    format('INSERT INTO customer ?', input);
+    assert.deepStrictEqual(input, backup);
+  });
 });
