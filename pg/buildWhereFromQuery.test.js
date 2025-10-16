@@ -2,7 +2,7 @@ const { describe, test } = require('node:test');
 const assert = require('node:assert');
 const buildWhereFromQuery = require('./buildWhereFromQuery');
 
-describe('buildWhereFromQuery', () => {
+describe('buildWhereFromQuery (pg)', () => {
   test('empty case', () => {
     assert.equal(buildWhereFromQuery({}), '');
   });

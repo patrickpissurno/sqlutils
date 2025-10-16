@@ -2,7 +2,7 @@ const { describe, test } = require('node:test');
 const assert = require('node:assert');
 const format = require('./format');
 
-describe('format', () => {
+describe('format (pg)', () => {
   test('array should have at least one element', () => {
     assert.throws(() => format('INSERT INTO customer ?', []));
   });

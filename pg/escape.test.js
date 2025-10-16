@@ -2,7 +2,7 @@ const { describe, test } = require('node:test');
 const assert = require('node:assert');
 const escape = require('./escape');
 
-describe('buildWhereFromQuery', () => {
+describe('escape (pg)', () => {
   test('boolean', () => {
     assert.equal(escape(true), `true`);
   });
