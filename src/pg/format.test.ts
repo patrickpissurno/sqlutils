@@ -1,6 +1,6 @@
-const { describe, test } = require('node:test');
-const assert = require('node:assert');
-const format = require('./format');
+import { describe, test } from 'node:test';
+import assert from 'node:assert';
+import { format } from './format.js';
 
 describe('format (pg)', () => {
   test('array should have at least one element', () => {
