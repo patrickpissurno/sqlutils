@@ -3,14 +3,19 @@ import { escape } from './escape.js';
 //TODO: keys should also be escaped with the double quote character (")
 // and support for columns with whitespaces should also be added
 
-export type BuildWhereFromQueryProps =
-  | Record<string, unknown>
-  | BuildWhereFromQueryProps[];
+export type QueryValue = string | number | boolean | null | Date;
+
+export type BuildWhereFromQueryProps = Record<
+  string,
+  QueryValue | QueryValue[] | BuildWhereFromQueryProps[]
+>;
 
 /**
- * @param query object
+ * @param query query object or array of query objects
  */
-export function buildWhereFromQuery(query: BuildWhereFromQueryProps): string {
+export function buildWhereFromQuery(
+  query: BuildWhereFromQueryProps | BuildWhereFromQueryProps[],
+): string {
   const queries = Array.isArray(query) ? query : [query];
 
   const r = queries
@@ -20,12 +25,13 @@ export function buildWhereFromQuery(query: BuildWhereFromQueryProps): string {
 
       let key: keyof typeof query;
       for (key in query) {
-        if (Array.isArray(query[key])) {
+        const value = query[key];
+        if (Array.isArray(value)) {
           if (i == 0) str += ' (';
           else str += ' AND ';
           str +=
             '(' +
-            query[key]
+            value
               .map((x) => `${key}${x == null ? ' IS ' : '='}${escape(x)}`)
               .join(' OR ') +
             ')';
