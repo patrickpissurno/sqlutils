@@ -1,6 +1,6 @@
-const { describe, test } = require('node:test');
-const assert = require('node:assert');
-const transformer = require('./transformer');
+import { describe, test } from 'node:test';
+import assert from 'node:assert';
+import { transformer } from './transformer.js';
 
 describe('transformer', () => {
   test('basic should work', () => {
@@ -53,7 +53,7 @@ describe('transformer', () => {
         sale_item_code: 6,
         sale_item_name: 'F',
       },
-    ];
+    ] as const;
 
     const found = transformer(rows, {
       key: 'id',
@@ -72,7 +72,7 @@ describe('transformer', () => {
           ],
         },
       ],
-    });
+    } as const);
 
     const wanted = [
       {
