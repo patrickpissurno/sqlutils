@@ -1,13 +1,12 @@
-const sqlstring = require('sqlstring');
+import sqlstring from 'sqlstring';
 
 /**
- * @param { any } value any value
- * @returns { string }
+ * @param value any value
  */
-module.exports = function (value) {
+export function escape(value: unknown): string {
   if (value === 'NOW()' || value === 'now()')
     // NOW() returned as-is, so that working with dates is easier
     return value;
 
   return sqlstring.escape(value);
-};
+}

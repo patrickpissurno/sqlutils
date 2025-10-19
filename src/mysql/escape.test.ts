@@ -1,6 +1,6 @@
-const { describe, test } = require('node:test');
-const assert = require('node:assert');
-const escape = require('./escape');
+import { describe, test } from 'node:test';
+import assert from 'node:assert';
+import { escape } from './escape.js';
 
 describe('escape (mysql)', () => {
   test('regular string', () => {

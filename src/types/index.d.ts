@@ -18,3 +18,9 @@ declare module 'pg-promise/lib/formatting.js' {
     as: Record<FormatAsKey, (value: unknown, ...[]) => string>,
   };
 }
+
+declare module 'sqlstring' {
+  export default {
+    escape: (value: unknown) => string,
+  };
+}
