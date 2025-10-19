@@ -1,6 +1,6 @@
-const { describe, test } = require('node:test');
-const assert = require('node:assert');
-const groupColumnsToObjects = require('./groupColumnsToObjects');
+import { describe, test } from 'node:test';
+import assert from 'node:assert';
+import { groupColumnsToObjects } from './groupColumnsToObjects.js';
 
 describe('groupColumnsToObjects', () => {
   test('simple case with rename', () => {
