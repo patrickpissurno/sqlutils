@@ -190,7 +190,7 @@ describe('transformer', () => {
         sale_item_code: 6,
         sale_item_name: 'F',
       },
-    ];
+    ] as const;
 
     const found = transformer(rows, {
       key: 'id',
@@ -210,7 +210,7 @@ describe('transformer', () => {
           ],
         },
       ],
-    });
+    } as const);
 
     const wanted = [
       {
@@ -300,7 +300,7 @@ describe('transformer', () => {
         sale_item_code: 6,
         sale_item_name: 'F',
       },
-    ];
+    ] as const;
 
     const found = transformer(rows, {
       key: 'id',
@@ -319,7 +319,7 @@ describe('transformer', () => {
           ],
         },
       ],
-    });
+    } as const);
 
     const wanted = [
       {
@@ -409,7 +409,7 @@ describe('transformer', () => {
         sale_item_code: 6,
         sale_item_name: 'F',
       },
-    ];
+    ] as const;
 
     const found = transformer(rows, {
       key: 'id',
@@ -428,7 +428,7 @@ describe('transformer', () => {
           ],
         },
       ],
-    });
+    } as const);
 
     const wanted = [
       {
@@ -502,7 +502,7 @@ describe('transformer', () => {
         address_street: 'C',
         address_city: 'D',
       },
-    ];
+    ] as const;
 
     const found = transformer(rows, {
       key: 'id',
@@ -520,7 +520,7 @@ describe('transformer', () => {
           single: true,
         },
       ],
-    });
+    } as const);
 
     const wanted = [
       {
@@ -568,12 +568,12 @@ describe('transformer', () => {
     const rows = [
       { id: 1, name: 'A' },
       { id: 2, name: 'B' },
-    ];
+    ] as const;
 
     const found = transformer(rows, {
       key: ['id', null],
       columns: ['name'],
-    });
+    } as const);
 
     const wanted = [{ name: 'A' }, { name: 'B' }];
 
@@ -584,12 +584,12 @@ describe('transformer', () => {
     const rows = [
       { id: 1, name: 'A' },
       { id: 2, name: 'B' },
-    ];
+    ] as const;
 
     const found = transformer(rows, {
       key: 'id',
       columns: [['name', null]],
-    });
+    } as const);
 
     const wanted = [{ id: 1 }, { id: 2 }];
 
@@ -597,11 +597,11 @@ describe('transformer', () => {
   });
 
   test('empty columns should work', () => {
-    const rows = [{ id: 1 }, { id: 2 }];
+    const rows = [{ id: 1 }, { id: 2 }] as const;
 
     const found = transformer(rows, {
       key: 'id',
-    });
+    } as const);
 
     const wanted = [{ id: 1 }, { id: 2 }];
 
