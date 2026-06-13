@@ -1,41 +1,5 @@
 import { recursiveMapsToLists } from '../utils/recursiveMapsToLists.js';
 
-// type GetColumnOut<K, V extends Column<K>> = V extends [K, string] ? V[1] : V;
-
-// type Column<K> = K | [K, string];
-
-// export type Transformation<Row extends Record<string, unknown>> = {
-//   key: Column<keyof Row>;
-//   columns?: Column<keyof Row>[];
-//   children?: (Transformation<Row> & ChildTransformation)[];
-// };
-
-// export type ChildTransformation = {
-//   rename: string;
-// } & (
-//   | {
-//       /** cannot be true when flat is true */
-//       single?: true;
-//     }
-//   | {
-//       /** cannot be true when single is true */
-//       flat?: true;
-//     }
-// );
-
-// export type TransformationResult<
-//   Row extends Record<string, unknown>,
-//   T extends Transformation<Row>,
-// > = {
-//   //implement
-// };
-
-// [`1`]: T['key'] extends [string, string] ? T['key'][1] : T['key'];
-// [`1`]: GetColumnOut<keyof Row, T['key']>;
-// [GetColumnOut<keyof Row, T['key']>]: string;
-
-// --- Fixed & Helper Types ---
-
 /**
  * Represents a column from the source row.
  * Can be a simple key 'K' (e.g., 'id')
